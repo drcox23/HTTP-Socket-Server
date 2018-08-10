@@ -3,6 +3,9 @@ const net = require("net");
 const server = net.createServer(client => {
   client.on("data", data => {
     const msg = data.toString();
+
+    if (msg.includes("GET")) {
+    }
   });
 });
 
