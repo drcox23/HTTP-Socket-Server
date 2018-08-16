@@ -1,10 +1,6 @@
 const net = require("net");
 const PORT = 8080;
-const { error } = require("./assets/404.js");
-const { helium } = require("./assets/helium.js");
-const { hydrogen } = require("./assets/hydrogen.js");
-const { index } = require("./assets/index.js");
-const { css } = require("./assets/styles.js");
+const { index, hydrogen, helium, error, css } = require("./assets.js");
 
 const server = net.createServer(client => {
   client.setEncoding("utf8");
@@ -19,31 +15,31 @@ const server = net.createServer(client => {
     const serverName = "coolServer"; // whatever server
 
     if (uri === "/") {
-      const message = `${status}\n Server: ${serverName}\n Date: ${date}\n Content-Type: text/html\n\n${index}`;
+      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${index}`;
 
       client.write(message);
       client.end();
 
     } else if (uri === "/helium.html") {
-      const message = `${status}\n Server: ${serverName}\n Date: ${date}\n Content-Type: text/html\n\n${helium}`;
+      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${helium}`;
 
       client.write(message);
       client.end();
 
     } else if (uri === "/hydrogen.html") {
-      const message = `${status}\n Server: ${serverName}\n Date: ${date}\n Content-Type: text/html\n\n${hydrogen}`;
+      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${hydrogen}`;
 
       client.write(message);
       client.end();
 
     } else if (uri === "/css/styles.css") {
-      const message = `${status}\nServer: ${serverName}\n Date: ${date}\n Content-Type: text/css\n\n${css}`;
+      const message = `${status}\nServer:${serverName}\n Date:${date}\n Content-Type: text/css\n\n${css}`;
 
       client.write(message);
       client.end;
 
     } else {
-      const message = `${status}\n Server: ${serverName}\n Date: ${date}\n Content-Type: text/html\n\n${error}`;
+      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${error}`;
 
       client.write(message);
       client.end();
