@@ -5,7 +5,6 @@ const { index, hydrogen, helium, error, css } = require("./assets.js");
 const server = net.createServer(client => {
   client.setEncoding("utf8");
   client.on("data", data => {
-    console.log(data);
     let req = data.toString().split("\n");
     let reqLine = req[0].split(" ");
     let uri = reqLine[1];
@@ -15,31 +14,31 @@ const server = net.createServer(client => {
     const serverName = "coolServer"; // whatever server
 
     if (uri === "/") {
-      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${index}`;
+      const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${index}`;
 
       client.write(message);
       client.end();
 
     } else if (uri === "/helium.html") {
-      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${helium}`;
+      const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${helium}`;
 
       client.write(message);
       client.end();
 
     } else if (uri === "/hydrogen.html") {
-      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${hydrogen}`;
+      const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${hydrogen}`;
 
       client.write(message);
       client.end();
 
     } else if (uri === "/css/styles.css") {
-      const message = `${status}\nServer:${serverName}\n Date:${date}\n Content-Type: text/css\n\n${css}`;
+      const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: text/css\n\n${css}`;
 
       client.write(message);
       client.end;
 
     } else {
-      const message = `${status}\n Server:${serverName}\n Date:${date}\n Content-Type: text/html\n\n${error}`;
+      const message = `${status}\nServer: ${serverName}\nDate: ${date}\nContent-Type: *\n\n${error}`;
 
       client.write(message);
       client.end();
